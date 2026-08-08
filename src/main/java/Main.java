@@ -21,7 +21,17 @@ public class Main {
 
         try {
             switch (command) {
-                case "ls": FilesAdapter.getFileList(folder);
+                case "ls":
+                    FilesAdapter.getFileList(folder);
+                    break;
+                case "mkdir":
+                    FilesAdapter.createFolder(folder);
+                    break;
+                case "rm":
+                    FilesAdapter.deleteFolder(folder);
+                    break;
+                default:
+                    System.out.println("Unknown command.");
             }
         } catch (IOException e) {
             System.out.println("Error opening files list. " + e);

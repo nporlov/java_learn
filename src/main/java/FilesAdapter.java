@@ -10,4 +10,14 @@ public class FilesAdapter {
             System.out.println(path.getFileName());
         }
     }
+
+    static void createFolder(Path folder) throws IOException {
+        Files.createDirectory(folder);
+        System.out.println("Folder created");
+    }
+
+    static void deleteFolder(Path folder) throws IOException {
+        Files.delete(folder);
+        System.out.println("Folder deleted");
+    }
 }
