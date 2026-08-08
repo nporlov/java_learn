@@ -1,20 +1,32 @@
 import java.io.IOException;
 import java.nio.file.*;
-import java.util.Scanner;
 
 public class Main {
     static void main(String[] args) {
-        Path myFolder = Paths.get("C:\\Dev\\java\\workspace");
+        String command = null;
+        Path folder = null;
         try {
-            DirectoryStream <Path> stream = Files.newDirectoryStream(myFolder);
-            Scanner scanner = new Scanner(System.in);
-            String input = scanner.nextLine();
-            System.out.println(input);
-            for (Path path : stream) {
-                System.out.println(path.getFileName());
+            command = args[0];
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("No command entered. " + e);
+        }
+
+        try {
+            folder = Paths.get(args[1]);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("No argument entered. " + e);
+        } catch (InvalidPathException e) {
+            System.out.println("Invalid path entered. " + e);
+        }
+
+        try {
+            switch (command) {
+                case "ls": FilesAdapter.getFileList(folder);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error opening files list. " + e);
+        } catch (NullPointerException e) {
+            System.out.println("No files list found. " + e);
         }
     }
 }
