@@ -4,20 +4,21 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class FilesAdapter {
-    static void getFileList(Path folder) throws IOException {
-        DirectoryStream<Path> stream = Files.newDirectoryStream(folder);
-        for (Path path : stream) {
-            System.out.println(path.getFileName());
-        }
+    static DirectoryStream<Path> getFileList(Path folder) throws IOException {
+        return Files.newDirectoryStream(folder);
     }
 
     static void createFolder(Path folder) throws IOException {
         Files.createDirectory(folder);
-        System.out.println("Folder created");
     }
 
     static void deleteFolder(Path folder) throws IOException {
         Files.delete(folder);
-        System.out.println("Folder deleted");
+    }
+
+    static void printFileList(DirectoryStream<Path> stream) throws IOException {
+        for (Path path : stream) {
+            System.out.println(path);
+        }
     }
 }

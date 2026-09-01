@@ -22,13 +22,16 @@ public class Main {
         try {
             switch (command) {
                 case "ls":
-                    FilesAdapter.getFileList(folder);
+                    DirectoryStream<Path> fileList = FilesAdapter.getFileList(folder);
+                    FilesAdapter.printFileList(fileList);
                     break;
                 case "mkdir":
                     FilesAdapter.createFolder(folder);
+                    System.out.println("Folder created.");
                     break;
                 case "rm":
                     FilesAdapter.deleteFolder(folder);
+                    System.out.println("Folder deleted.");
                     break;
                 default:
                     System.out.println("Unknown command.");
