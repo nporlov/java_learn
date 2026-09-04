@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .kotlin
+test.jar
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -38,3 +39,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/out/artifacts/files_adapter_jar/files_adapter.jar
+/.idea/artifacts/test_jar.xml
